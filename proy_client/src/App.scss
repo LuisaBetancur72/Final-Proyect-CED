@@ -1,0 +1,7 @@
+/* Importaciones en scss son con @import */
+@import "./scss/index.scss";
+.App{
+    h1{
+        color:$primary_color;
+    }
+}

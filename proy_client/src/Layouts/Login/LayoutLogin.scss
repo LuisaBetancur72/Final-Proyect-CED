@@ -1,0 +1,33 @@
+@import "../../scss/index.scss";
+
+.sign-in{
+
+    &__center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;    
+    }
+
+    &__background{
+        width: 400px;
+        background-color: #EDEDED;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    &__left{
+        &__logo{
+            height: 50px;
+            padding: 0 10px;
+        }
+    }
+  
+    button{
+        color: $color-principal;
+        &:focus,
+        &:active{
+            color: $secundary-color;
+        }
+    }
+}

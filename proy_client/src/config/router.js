@@ -17,7 +17,6 @@ const GeneralRoutes = [
     {path:"*", component:NotFound, layout:LayoutGeneral}
 ];
 
-/* ... -> Split operator: Poner todo al mismo nivel */
 const allRoutesProject = [...AdminRoutes, ...GeneralRoutes];
 
 export default allRoutesProject;

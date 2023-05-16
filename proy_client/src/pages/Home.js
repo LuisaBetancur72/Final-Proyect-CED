@@ -1,7 +1,16 @@
 import React from 'react'
+import { Button } from 'antd';
 
 export const Home = () => {
   return (
-    <div>Home</div>
+    <>
+    <Button href="/admin/login" htmlType="submit">
+      Ingresar
+    </Button>&nbsp;&nbsp;
+    
+    <Button href="/admin/login" htmlType="submit">
+      Registrarse
+    </Button>
+    </>
   )
 }

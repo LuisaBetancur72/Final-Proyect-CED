@@ -8,7 +8,7 @@ export const Home = () => {
       Ingresar
     </Button>&nbsp;&nbsp;
     
-    <Button href="/admin/login" htmlType="submit">
+    <Button href="/register" htmlType="submit">
       Registrarse
     </Button>
     </>

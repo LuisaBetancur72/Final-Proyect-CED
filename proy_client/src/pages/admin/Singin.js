@@ -22,7 +22,6 @@ export const Singin = () => {
               },
             ]}
           >
-          <h1></h1>  
             <Input />
           </Form.Item>
           <Form.Item label="Password" name="password"
@@ -43,6 +42,9 @@ export const Singin = () => {
           <Form.Item>
             <Button type="primary" htmlType="submit">
               Iniciar Sesión
+            </Button>&nbsp;&nbsp;
+            <Button href="/" htmlType="submit">
+              Atrás
             </Button>
           </Form.Item>
         </Form>

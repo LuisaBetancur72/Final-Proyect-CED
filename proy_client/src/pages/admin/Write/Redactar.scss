@@ -1,6 +1,4 @@
-@import "../../scss/index.scss";
-
-.sign-in{
+.write{
 
     &__center{
     display: flex;
@@ -10,7 +8,7 @@
     }
 
     &__background{
-        width: 480px;
+        width: 800px;
         background-color: #EDEDED;
         padding: 20px;
         border-radius: 5px;
@@ -23,17 +21,4 @@
         }
     }
   
-    button{
-        color: $color-principal;
-        &:focus,
-        &:active{
-            color: $secundary-color;
-        }
-    }
-}
-
-.layout-login-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }

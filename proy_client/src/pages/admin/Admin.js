@@ -6,6 +6,6 @@ export const Admin = () => {
     /* Antes del return JavaScript */
   return (
     /* Después del return combinación html y css */
-    <div>Admin</div>
+    <div>asfasdfasfd</div>
   )
 }

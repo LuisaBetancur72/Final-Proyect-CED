@@ -1,0 +1,48 @@
+$primary-color: #0984E3; 
+
+.button-container-register {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  .custom-button-register {
+    border-radius: 50px;
+    border-color: $primary-color;
+    color: $primary-color;
+    background-color: #FFFFFF;
+    font-family: 'Fira Sans';
+
+    &:hover,
+    &:focus {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+
+  .registrar-button {
+    border-radius: 50px;
+    border-color: $primary-color;
+    background-color: #F4D73B;
+    font-family: 'Fira Sans';
+    color: $primary-color;
+  }
+}
+
+.input-field {
+    border-color: #0090D0;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.custom-select .ant-select-selector {
+    border-color: #0090D0 !important;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.ant-form-item-label > label {
+    color: #0069A3 !important;
+}
+
+.label-text-register {
+  font-family: 'Fira Sans';
+}
+

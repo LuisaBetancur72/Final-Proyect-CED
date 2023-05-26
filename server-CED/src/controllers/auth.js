@@ -1,30 +1,23 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const jwt = require("../utils/jwt");
-const axios = require ("axios");
 
 const register = async (req, res) => {
-  const { firstname, lastname, email, departamento, municipio, password } = req.body;
+  const { userType, fullname, password, email, phone } = req.body;
 
   if (!email) res.status(400).send({ msg: "El email es requerido" });
   if (!password) res.status(400).send({ msg: "La contraseñas es requerida" });
 
-  const response = await axios.get("https://www.datos.gov.co/resource/xdk5-pm3f.json");
-  const api_data = response.data;
-  const dpto = api_data.find(api_data =>{ return api_data.departamento === departamento});
-  const mun = api_data.find(api_data =>{return api_data.municipio === municipio});
   const salt = bcrypt.genSaltSync(10);
   const hashPassword = bcrypt.hashSync(password, salt);
 
   const user = new User({
-      firstname,
-      lastname,
-      email: email.toLowerCase(),
-      departamento: dpto.departamento,
-      municipio: mun.municipio,
-      role: "user",
-      active: false,
+      userType,
+      fullname,
       password: hashPassword,
+      email: email.toLowerCase(),
+      phone,
+      active: false,
   });
   try {
       const userStorage = await user.save();

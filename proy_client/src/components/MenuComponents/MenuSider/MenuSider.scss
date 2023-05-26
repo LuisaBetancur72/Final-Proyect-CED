@@ -1,9 +1,19 @@
 @import "../../../scss/index.scss";
 
-.menu-sider{
-    position: absolute;
-    left: 0;
-    top: 28px;
-    height: 100vh;
-    background-color: antiquewhite;
+.menu-sider {
+  position: absolute;
+  left: 0;
+  top: 28px;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0090D0, #9CD04D);
+  color: #FFFFFF;
+
+  .ant-menu-item-selected {
+    background-color: #0069A3;
+    color: #9CD04D;
+  }
+}
+
+.navbar-text{
+    font-family: 'Fira Sans';
 }

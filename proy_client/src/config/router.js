@@ -1,23 +1,24 @@
-import { LayoutGeneral } from "../Layouts/LayoutGeneral";
+import { LayoutGeneral } from "../Layouts/General/LayoutGeneral";
 import { Admin } from "../pages/admin/Admin";
-import { Signin } from "../pages/admin/Signin";
-import { Contact } from "../pages/Contact";
-import { Home } from "../pages/Home";
-import { NotFound } from "../pages/NotFound/NotFound";
+import { Singin } from "../pages/web/Singin/Singin";
+import { Home } from "../pages/web/Home/Home";
+import { Register }from "../pages/web/Register/register";
+import { NotFound } from "../pages/web/NotFound/NotFound";
+import { LayoutLogin } from "../Layouts/Login/LayoutLogin";
+import { redactar } from "../pages/admin/Write/redactar";
 
 /* Components > Layouts > Pages > routes */
 const AdminRoutes = [
-    {path:"/admin", component:Admin, layout:LayoutGeneral},
-    {path:"/admin/sign-in", component:Signin, layout:LayoutGeneral}
+  { path: "/admin", component: Admin, layout: LayoutGeneral },
+  { path: "/login", component: Singin , layout: LayoutLogin },
 ];
 
 const GeneralRoutes = [
-    {path:"/", component:Home, layout:LayoutGeneral},
-    {path:"/contact", component:Contact},
-    {path:"*", component:NotFound, layout:LayoutGeneral}
+    { path: "/register", component: Register, layout: LayoutLogin },
+    { path: "/admin/mensajes/redactar", component: redactar, layout: LayoutGeneral },
+    { path: "/", component: Home, layout: LayoutLogin },
+    { path: "*", component: NotFound, layout: LayoutGeneral },
 ];
 
-/* ... -> Split operator: Poner todo al mismo nivel */
 const allRoutesProject = [...AdminRoutes, ...GeneralRoutes];
-
 export default allRoutesProject;

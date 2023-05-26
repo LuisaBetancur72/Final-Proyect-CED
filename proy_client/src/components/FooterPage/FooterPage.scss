@@ -1,0 +1,62 @@
+@import "../../App.scss";
+
+.footer {
+  color: #777;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-size: 14px;
+  text-align: center;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+
+  h4,
+  .h4 {
+    color: #f4d73b !important;
+    font-family: 'Fira Sans';
+  }
+
+  p,
+  .p {
+    font-family: 'Fira Sans';
+  }
+
+
+  a {
+    color: #777;
+    
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  .social-links {
+    display: flex;
+    margin-top: 16px;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      margin-right: 8px;
+      color: #fff;
+      background-color: #333;
+      border-radius: 50%;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

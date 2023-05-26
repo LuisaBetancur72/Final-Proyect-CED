@@ -1,0 +1,51 @@
+$primary-color: #0984E3; 
+
+.button-container-sigin {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  .custom-button-sigin {
+    border-radius: 50px;
+    border-color: $primary-color;
+    color: $primary-color;
+    background-color: #FFFFFF;
+    font-family: 'Fira Sans';
+
+    &:hover,
+    &:focus {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+
+  .ingresar-button-sigin {
+    border-radius: 50px;
+    border-color: $primary-color;
+    color: $primary-color;
+    background-color: #F4D73B;
+    font-family: 'Fira Sans';
+
+    &:hover,
+    &:focus {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+}
+
+.input-field-sigin {
+  width: 250px !important; 
+  border-color: #0090D0 !important;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.label-text-sigin {
+  font-family: 'Fira Sans';
+}
+
+.checkbox-container-sigin {
+  .checkbox-text-sigin {
+    font-family: 'Fira Sans';
+  }
+}

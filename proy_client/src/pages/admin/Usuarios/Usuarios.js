@@ -7,6 +7,7 @@ export const Usuarios = () => {
       id: 1,
       tipo: "Administrador",
       nombre: "John Doe",
+      estado: "Avtivo",
       correo: "johndoe@example.com",
       telefono: "123456789",
       departamento: "Departamento 1",
@@ -16,6 +17,7 @@ export const Usuarios = () => {
       id: 1,
       tipo: "Administrador",
       nombre: "John Doe",
+      estado: "Avtivo",
       correo: "johndoe@example.com",
       telefono: "123456789",
       departamento: "Departamento 1",
@@ -25,6 +27,7 @@ export const Usuarios = () => {
       id: 1,
       tipo: "Administrador",
       nombre: "John Doe",
+      estado: "Avtivo",
       correo: "johndoe@example.com",
       telefono: "123456789",
       departamento: "Departamento 1",
@@ -56,6 +59,7 @@ export const Usuarios = () => {
                 <th>Id</th>
                 <th>Tipo de usuario</th>
                 <th>Nombre completo</th>
+                <th>Estado</th>
                 <th>Correo</th>
                 <th>Teléfono</th>
                 <th>Departamento</th>
@@ -69,6 +73,7 @@ export const Usuarios = () => {
                   <td>{usuario.id}</td>
                   <td>{usuario.tipo}</td>
                   <td>{usuario.nombre}</td>
+                  <td>{usuario.estado}</td>
                   <td>{usuario.correo}</td>
                   <td>{usuario.telefono}</td>
                   <td>{usuario.departamento}</td>

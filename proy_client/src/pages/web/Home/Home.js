@@ -13,7 +13,7 @@ export const Home = () => {
           Iniciar sesión <ArrowRightOutlined />
         </Button>
         &nbsp;&nbsp;
-        <Button href="/register" className="custom-button-home" htmlType="submit">
+        <Button href="/users" className="custom-button-home" htmlType="submit">
           Registrarse <ArrowRightOutlined />
         </Button>
       </div>

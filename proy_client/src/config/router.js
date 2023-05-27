@@ -14,7 +14,7 @@ const AdminRoutes = [
 ];
 
 const GeneralRoutes = [
-    { path: "/register", component: Register, layout: LayoutLogin },
+    { path: "/users", component: Register, layout: LayoutLogin },
     { path: "/admin/mensajes/redactar", component: redactar, layout: LayoutGeneral },
     { path: "/", component: Home, layout: LayoutLogin },
     { path: "*", component: NotFound, layout: LayoutGeneral },

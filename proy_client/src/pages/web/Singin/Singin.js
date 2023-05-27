@@ -2,8 +2,44 @@ import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { ArrowRightOutlined, CloseOutlined } from '@ant-design/icons';
 import './Singin.scss';
+import { useForm } from 'antd/lib/form/Form';
+import * as Yup from 'yup';
+import axios from 'axios';
+
+const valuesLogin={
+  username:"",
+  password:"",
+}
+
+const validateLogin= Yup.object().shape({
+  username: Yup.string().required('es necesario el correo'),
+  password: Yup.string().required('es necesario la contraseña')
+})
 
 export const Singin = () => {
+  const [form] = useForm();
+
+  const handleRegister = (values) => {
+    axios
+    .post('http://127.0.0.1:5000/api/v1/login', values, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+        // Manejar la respuesta del servidor
+        console.log(response.data);
+        form.resetFields();
+      })
+      .catch(error => {
+        // Manejar el error si ocurre
+        console.error(error);
+      });
+  };
+
+const onFinish= (values)=>{
+  handleRegister(values)
+};
 
   return (
     <div >
@@ -11,6 +47,10 @@ export const Singin = () => {
         <h1 style={{ textAlign: 'center', fontFamily:'Fira Sans Light', color: '#0069A3' }}>CED</h1>
         <h1 style={{ textAlign: 'center',fontFamily:'Fira Sans Light', color: '#0069A3' }}>Comuniciacion Estudiantes Directivos/Docentes </h1>
         <Form
+          form={form}
+          valuesLogin={valuesLogin}
+          validate={validateLogin}
+          onFinish={onFinish}
           name="basic"
           initialValues={{
             remember: true,
@@ -52,7 +92,7 @@ export const Singin = () => {
           <Form.Item>
             <div className="button-container-sigin">
               <Button
-                href="#"
+                //href="#"
                 className="ingresar-button-sigin"
                 htmlType="submit"
               >

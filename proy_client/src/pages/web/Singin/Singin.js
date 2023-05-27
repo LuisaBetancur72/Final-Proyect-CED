@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import { ArrowRightOutlined, CloseOutlined } from '@ant-design/icons';
 import { useForm } from 'antd/lib/form/Form';
 import * as Yup from 'yup';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import "./Singin.scss";
 
 const valuesLogin = {
   username: '',
@@ -117,8 +118,9 @@ export const Singin = () => {
                   Iniciar Sesión <ArrowRightOutlined />
                 </Button>
               )}
-              <Button className="ingresar-button-sigin" onClick={handleGoHome}>
-                Atras 
+              &nbsp;&nbsp;
+              <Button className="custom-button-sigin" onClick={handleGoHome}>
+                Atras <CloseOutlined />
               </Button>
             </div>
           </Form.Item>

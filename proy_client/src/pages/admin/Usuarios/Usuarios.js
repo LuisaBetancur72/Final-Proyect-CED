@@ -79,7 +79,7 @@ export const Usuarios = () => {
                   <td>{usuario.departamento}</td>
                   <td>{usuario.municipio}</td>
                   <td>
-                    <a href="#">Editar</a>
+                    <a href="/admin/users/edit">Editar</a>
                     <a href="#" className="delete">
                       Eliminar
                     </a>

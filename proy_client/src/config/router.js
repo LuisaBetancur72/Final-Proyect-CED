@@ -1,5 +1,6 @@
 import { LayoutGeneral } from "../Layouts/General/LayoutGeneral";
 import { Admin } from "../pages/admin/AdminHome/Admin";
+import { Usuarios } from "../pages/admin/Usuarios/Usuarios";
 import { Singin } from "../pages/web/Singin/Singin";
 import { Home } from "../pages/web/Home/Home";
 import { Register }from "../pages/web/Register/register";
@@ -10,6 +11,7 @@ import { redactar } from "../pages/admin/Write/redactar";
 /* Components > Layouts > Pages > routes */
 const AdminRoutes = [
   { path: "/admin", component: Admin, layout: LayoutGeneral },
+  { path: "/admin/users", component: Usuarios, layout: LayoutGeneral },
   { path: "/login", component: Singin , layout: LayoutLogin },
 ];
 

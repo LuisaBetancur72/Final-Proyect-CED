@@ -1,5 +1,5 @@
 import { LayoutGeneral } from "../Layouts/General/LayoutGeneral";
-import { Admin } from "../pages/admin/Admin";
+import { Admin } from "../pages/admin/AdminHome/Admin";
 import { Singin } from "../pages/web/Singin/Singin";
 import { Home } from "../pages/web/Home/Home";
 import { Register }from "../pages/web/Register/register";

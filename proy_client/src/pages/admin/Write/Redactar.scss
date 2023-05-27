@@ -1,3 +1,5 @@
+$primary-color: #0984E3; 
+
 .write{
 
     &__center{
@@ -22,3 +24,37 @@
     }
   
 }
+
+.button-container-redactar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  
+    .cancelar-button{
+      border-radius: 50px;
+      border-color: $primary-color;
+      color: $primary-color;
+      background-color: #FFFFFF;
+      font-family: 'Fira Sans';
+      display: flex;
+        justify-content: center;
+        margin-top: 20px;
+  
+      &:hover,
+      &:focus {
+        border-color: $primary-color;
+        color: $primary-color;
+      }
+    }
+  
+    .enviar-button {
+      border-radius: 50px;
+      border-color: $primary-color;
+      background-color: #F4D73B;
+      font-family: 'Fira Sans';
+      color: $primary-color;
+      display: flex;
+        justify-content: center;
+    margin-top: 20px;
+    }
+  }

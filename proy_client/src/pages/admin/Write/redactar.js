@@ -16,39 +16,39 @@ export const redactar = () => {
             }}
           >
             <Form.Item
-            label={<span className="label-text-register">Destinatario</span>}
-            name="addressee"
-            rules={[
-              {
-                required: true,
-                message: "Por favor ingrese el destinatario!",
-              },
-            ]}
-          >
-            <Input className="input-field" />
-          </Form.Item>
+              label={<span className="label-text-register">Destinatario</span>}
+              name="addressee"
+              rules={[
+                {
+                  required: true,
+                  message: "Por favor ingrese el destinatario!",
+                },
+              ]}
+            >
+              <Input className="input-field" />
+            </Form.Item>
 
-          <Form.Item
-            label={<span className="label-text-register">Categoría</span>}
-            name="UserType"
-            rules={[
-              {
-                required: true,
-                message: "Por favor ingrese Una categoría!",
-              },
-            ]}
-          >
-            <Select defaultValue="" className="custom-select" >
-              <Option value="" disabled>
-                Seleccione una opción
-              </Option>
-              <Option value="excusa">Excusa</Option>
-              <Option value="consulta">Consulta</Option>
-              <Option value="solicitar-cita">Solicitar Cita</Option>
-            </Select>
-          </Form.Item>
+            <Form.Item
+              label={<span className="label-text-register">Categoría</span>}
+              name="UserType"
+              rules={[
+                {
+                  required: true,
+                  message: "Por favor ingrese Una categoría!",
+                },
+              ]}
+            >
+              <Select defaultValue="" className="custom-select">
+                <Option value="" disabled>
+                  Seleccione una opción
+                </Option>
+                <Option value="excusa">Excusa</Option>
+                <Option value="consulta">Consulta</Option>
+                <Option value="solicitar-cita">Solicitar Cita</Option>
+              </Select>
+            </Form.Item>
 
-          <Form.Item
+            <Form.Item
               label={<span className="label-text-register">Descripción</span>}
               name="description"
               rules={[
@@ -60,23 +60,15 @@ export const redactar = () => {
             >
               <TextArea className="input-field" rows={4} />
             </Form.Item>
-
-          <Button
-                href="#"
-                className="custom-button registrar-button"
-                htmlType="submit"
-              >
-                Enviar 
+            <div className="button-container-redactar">
+              <Button href="#" className="enviar-button" htmlType="submit">
+                Enviar
               </Button>
               &nbsp;&nbsp;
-              <Button
-                href="/"
-                className="custom-button-register"
-                htmlType="submit"
-              >
-                Cancelar 
+              <Button href="/" className="cancelar-button" htmlType="submit">
+                Cancelar
               </Button>
-
+            </div>
           </Form>
         </div>
       </div>

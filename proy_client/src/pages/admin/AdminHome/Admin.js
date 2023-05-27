@@ -1,7 +1,7 @@
-import React from "react";
-import "./Admin.scss";
+import React from 'react'
 
 export const Admin = () => {
-  
-  
-};
+  return (
+    <div>Admin Home Page Works!</div>
+  )
+}

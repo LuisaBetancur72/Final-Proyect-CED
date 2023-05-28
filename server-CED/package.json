@@ -19,7 +19,8 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "multi-part": "^4.0.0"
+    "multi-part": "^4.0.0",
+    "yup": "^1.1.1"
   },
   "devDependencies": {
     "mongoose": "^7.0.5",

@@ -1,22 +1,28 @@
-import { LayoutGeneral } from "../Layouts/LayoutGeneral";
-import { Admin } from "../pages/admin/Admin";
-import { Singin } from "../pages/admin/Singin";
-import { Contact } from "../pages/Contact";
-import { Home } from "../pages/Home";
-import { Register }from "../pages/Register/register";
-import { NotFound } from "../pages/NotFound/NotFound";
+import { LayoutGeneral } from "../Layouts/General/LayoutGeneral";
+import { Admin } from "../pages/admin/AdminHome/Admin";
+import { Usuarios } from "../pages/admin/Usuarios/Usuarios";
+import { Singin } from "../pages/web/Singin/Singin";
+import { Home } from "../pages/web/Home/Home";
+import { Register }from "../pages/web/Register/register";
+import { NotFound } from "../pages/web/NotFound/NotFound";
 import { LayoutLogin } from "../Layouts/Login/LayoutLogin";
+import { redactar } from "../pages/admin/Write/redactar";
+import { Sent } from "../pages/admin/Sent/Sent";
+import { EditUser } from "../pages/admin/Usuarios/EditUser/EditUser";
 
 /* Components > Layouts > Pages > routes */
 const AdminRoutes = [
   { path: "/admin", component: Admin, layout: LayoutGeneral },
-  { path: "/admin/login", component: Singin , layout: LayoutLogin },
+  { path: "/admin/users", component: Usuarios, layout: LayoutGeneral },
+  { path: "/admin/users/edit", component: EditUser, layout: LayoutGeneral },
+  { path: "/login", component: Singin , layout: LayoutLogin },
+  { path: "/admin/mensajes/redactar", component: redactar, layout: LayoutGeneral },
+  { path: "/admin/mensajes/enviados", component: Sent, layout: LayoutGeneral },
 ];
 
 const GeneralRoutes = [
-    { path: "/register", component: Register, layout: LayoutLogin },
+    { path: "/register", component: Register, layout: LayoutLogin },    
     { path: "/", component: Home, layout: LayoutLogin },
-    { path: "/contact", component: Contact, layout: LayoutGeneral },
     { path: "*", component: NotFound, layout: LayoutGeneral },
 ];
 

@@ -10,7 +10,7 @@
     }
 
     &__background{
-        width: 400px;
+        width: 480px;
         background-color: #EDEDED;
         padding: 20px;
         border-radius: 5px;
@@ -31,3 +31,10 @@
         }
     }
 }
+
+.layout-login-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

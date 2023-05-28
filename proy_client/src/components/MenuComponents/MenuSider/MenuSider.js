@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { SnippetsOutlined } from "@ant-design/icons";
+import { BellOutlined, QuestionCircleOutlined, ExclamationCircleOutlined, ScheduleOutlined, FormOutlined, UnorderedListOutlined, MailOutlined, EditOutlined, UserOutlined, ExportOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import "./MenuSider.scss";
 
+const { SubMenu } = Menu;
 
 export const MenuSider = (props) => {
   const { Sider } = Layout;
@@ -11,48 +12,83 @@ export const MenuSider = (props) => {
   const navigate = useNavigate();
   const menuItems = [
     {
-      key: "/admin/novedades",
-      icon: <SnippetsOutlined />,
+      key: "/admin",
+      icon: <BellOutlined />,
       label: <span className="navbar-text">Novedades</span>,
     },
     {
       key: "/admin/asesoria",
-      icon: <SnippetsOutlined />,
+      icon: <QuestionCircleOutlined />,
       label: <span className="navbar-text">Asesoria</span>,
     },
     {
       key: "/admin/excusas",
-      icon: <SnippetsOutlined />,
+      icon: <ExclamationCircleOutlined />,
       label: <span className="navbar-text">Excusas</span>,
     },
     {
-      key: "/admin/consultas",
-      icon: <SnippetsOutlined />,
-      label: <span className="navbar-text">Consultas</span>,
-    },
-    {
       key: "/admin/horario",
-      icon: <SnippetsOutlined />,
+      icon: <ScheduleOutlined />,
       label: <span className="navbar-text">Horario</span>,
     },
     {
       key: "/admin/agenda",
-      icon: <SnippetsOutlined />,
-      label: <span className="navbar-text">Agenda</span>,
+      icon: <FormOutlined />,
+      label: <span className="navbar-text">Agendar</span>,
     },
     {
       key: "/admin/misCitas",
-      icon: <SnippetsOutlined />,
+      icon: <UnorderedListOutlined />,
       label: <span className="navbar-text">Mis Citas</span>,
+    },
+    {
+      key: "/admin/users",
+      icon: <UserOutlined />,
+      label: <span className="navbar-text">Usuarios</span>,
+    },
+    {
+      key: "#",
+      icon: <MailOutlined />,
+      label: <span className="navbar-text">Mensajes</span>,
+      subMenu: [
+        {
+          key: "/admin/mensajes/enviados",
+          icon: <ExportOutlined />,
+          label: <span className="navbar-text">Enviados</span>,
+        },
+        {
+          key: "/admin/mensajes/redactar",
+          icon: <EditOutlined />,
+          label: <span className="navbar-text">Redactar</span>,
+        },
+      ],
     },
   ];
 
   const menuClick = (e) => {
     const path = e.key;
-    console.log("Di clic en el menu" + path);
+    console.log("Di clic en el menú" + path);
     navigate(path);
   };
-  
+
+  const renderMenuItems = (menuData) => {
+    return menuData.map((menuItem) => {
+      if (menuItem.subMenu) {
+        return (
+          <SubMenu key={menuItem.key} icon={menuItem.icon} title={menuItem.label}>
+            {renderMenuItems(menuItem.subMenu)}
+          </SubMenu>
+        );
+      } else {
+        return (
+          <Menu.Item key={menuItem.key} icon={menuItem.icon}>
+            {menuItem.label}
+          </Menu.Item>
+        );
+      }
+    });
+  };
+
   return (
     <Sider className="menu-sider" collapsed={props.menuCollapsed}>
       <Menu
@@ -60,8 +96,9 @@ export const MenuSider = (props) => {
         mode="inline"
         defaultSelectedKeys={[location.pathname]}
         onClick={menuClick}
-        items={menuItems}
-      />
+      >
+        {renderMenuItems(menuItems)}
+      </Menu>
     </Sider>
   );
 };

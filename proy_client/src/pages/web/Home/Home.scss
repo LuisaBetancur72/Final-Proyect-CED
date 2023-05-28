@@ -1,0 +1,35 @@
+$primary-color: #0984E3; 
+
+.button-container-home {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  .custom-button-home {
+    border-radius: 50px;
+    border-color: $primary-color;
+    color: $primary-color;
+    background-color: #FFFFFF;
+    font-family: 'Fira Sans';
+
+    &:hover,
+    &:focus {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+
+  .ingresar-button-home {
+    border-radius: 50px;
+    border-color: $primary-color;
+    color: $primary-color;
+    background-color: #F4D73B;
+    font-family: 'Fira Sans';
+
+    &:hover,
+    &:focus {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+}

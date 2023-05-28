@@ -12,7 +12,7 @@ export const MenuSider = (props) => {
   const navigate = useNavigate();
   const menuItems = [
     {
-      key: "/admin/novedades",
+      key: "/admin",
       icon: <BellOutlined />,
       label: <span className="navbar-text">Novedades</span>,
     },

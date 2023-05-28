@@ -41,7 +41,15 @@
     height: 30px;
   }
   
-  .buscar-button {
+  .buscar-buttom {
+    border-radius: 50px;
+    border-color: #0069a3;
+    background-color: #FFFFFF;
+    font-family: "Fira Sans";
+    color: #0069a3;
+  }
+
+  .crear-button {
     border-radius: 50px;
     border-color: #0069a3;
     background-color: #f4d73b;

@@ -21,7 +21,7 @@ const AdminRoutes = [
 ];
 
 const GeneralRoutes = [
-    { path: "/users", component: Register, layout: LayoutLogin },    
+    { path: "/register", component: Register, layout: LayoutLogin },    
     { path: "/", component: Home, layout: LayoutLogin },
     { path: "*", component: NotFound, layout: LayoutGeneral },
 ];

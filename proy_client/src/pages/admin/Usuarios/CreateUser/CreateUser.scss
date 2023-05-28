@@ -1,0 +1,72 @@
+$primary-color: #0984e3;
+
+.create {
+  &__center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  &__background {
+    width: 500px;
+    background-color: #ededed;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  &__left {
+    &__logo {
+      height: 50px;
+      padding: 0 10px;
+    }
+  }
+}
+
+.create-heading {
+  font-family: "Fira Sans";
+  color: #0069a3;
+}
+
+.button-container-create {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  .cancelar-button {
+    border-radius: 50px;
+    border-color: $primary-color;
+    color: $primary-color;
+    background-color: #ffffff;
+    font-family: "Fira Sans";
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    &:hover,
+    &:focus {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+
+  .create-button {
+    border-radius: 50px;
+    border-color: $primary-color;
+    background-color: #f4d73b;
+    font-family: "Fira Sans";
+    color: $primary-color;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
+.input-field-create {
+    border-color: #0090D0;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.label-text-create {
+    font-family: 'Fira Sans';
+  }

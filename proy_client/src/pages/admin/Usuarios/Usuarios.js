@@ -1,5 +1,6 @@
 import React from "react";
 import "./Usuarios.scss";
+import { Button } from "antd";
 
 export const Usuarios = () => {
   const usuarios = [
@@ -50,7 +51,11 @@ export const Usuarios = () => {
           <div className="search-container">
             <input type="text" placeholder="Buscar" className="buscar" />
             &nbsp;&nbsp;
-            <button className="buscar-button">Buscar</button>
+            <button className="buscar-buttom">Buscar</button>
+            &nbsp;&nbsp;
+            <Button href="/admin/users/create" className="crear-button" htmlType="submit">
+              Crear Usuario
+            </Button>
           </div>
           <br></br>
           <table className="table">

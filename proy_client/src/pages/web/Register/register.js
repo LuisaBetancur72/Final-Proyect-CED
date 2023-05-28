@@ -8,16 +8,19 @@ import axios from 'axios';
 const { Option } = Select;
 
 const valuesRegister = {
-  UserType: '',
-  Fullname: '',
+  type_user: '',
+  fullname: '',
   email: '',
   password: '',
-  Phone: '',
+  phone: '',
+  active:'',
+  departamento: '',
+  municipio: ''
 };
 
 const validateRegister = Yup.object().shape({
-  UserType: Yup.string().required('Seleccione el tipo de usuario'),
-  Fullname: Yup.string().required('Ingrese el nombre completo'),
+  type_user: Yup.string().required('Seleccione el tipo de usuario'),
+  fullname: Yup.string().required('Ingrese el nombre completo'),
   email: Yup.string()
     .required('Es necesario el correo')
     .matches(
@@ -25,7 +28,8 @@ const validateRegister = Yup.object().shape({
       'El correo debe ser de dominio autonoma.com'
     ),
   password: Yup.string().required('Es necesario la contraseña'),
-  Phone: Yup.string().required('Es necesario el número de teléfono'),
+  phone: Yup.string().required('Es necesario el número de teléfono'),
+  active:false
 });
 
 export const Register = () => {
@@ -73,7 +77,7 @@ export const Register = () => {
         data[0].c_digo_dane_del_municipio
       ) {
         const municipios = data.map((municipio) => ({
-          value: municipio.c_digo_dane_del_municipio,
+          value: municipio.municipio,
           label: municipio.municipio,
         }));
         municipios.sort((a, b) => a.label.localeCompare(b.label));
@@ -98,7 +102,7 @@ export const Register = () => {
 
   const handleRegister = (values) => {
     axios
-      .post('http://localhost:5000/api/v1/users', values, {
+      .post('http://localhost:5000/api/v1/register', values, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -248,7 +252,7 @@ export const Register = () => {
           </Form.Item>
           <Form.Item
             label={<span className="label-text-register">Municipio</span>}
-            name="Municipio"
+            name="municipio"
             rules={[
               {
                 required: true,

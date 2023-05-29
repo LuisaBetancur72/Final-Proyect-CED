@@ -42,7 +42,7 @@ export const Singin = () => {
         navigate('/admin');
       })
       .catch((error) => {
-        console.error(error);
+        console.error('Error al iniciar sesión:', error);
       });
   };
 

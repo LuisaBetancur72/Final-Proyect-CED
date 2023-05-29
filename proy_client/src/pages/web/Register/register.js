@@ -31,7 +31,6 @@ const validateRegister = Yup.object().shape({
   phone: Yup.string().required('Es necesario el número de teléfono'),
   active:false
 });
-
 export const Register = () => {
   const [form] = Form.useForm();
   const [errorMessages, setErrorMessages] = useState([]);

@@ -1,10 +1,10 @@
-.delete {
+.delete-mensaje {
     color: red;
     border: 5px;
     padding: 5px 10px;
   }
   
-  .delete:hover {
+  .delete-mensaje:hover {
     color: darkred;
   }
   
@@ -30,22 +30,18 @@
     }
   }
   
-  .usuarios-heading {
+  .mensajes-heading {
     font-family: "Fira Sans";
     color: #0069a3;
   }
   
-  .buscar {
+  .buscar-mensaje {
     border-color: #0090d0;
     font-family: "Fira Sans", sans-serif;
     height: 30px;
   }
   
-
-  .crear-button {
-
   .buscar-button {
-
     border-radius: 50px;
     border-color: #0069a3;
     background-color: #f4d73b;
@@ -53,7 +49,7 @@
     color: #0069a3;
   }
   
-  .usuarios {
+  .mensajes {
     &__center {
       display: flex;
       justify-content: center;
@@ -61,7 +57,7 @@
     }
   
     &__background {
-      width: 950px;
+      width: 800px;
       background-color: #ededed;
       padding: 20px;
       border-radius: 5px;

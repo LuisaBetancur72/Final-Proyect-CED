@@ -1,77 +1,80 @@
 .delete {
-    color: red;
-    border: 5px;
-    padding: 5px 10px;
+  color: red;
+  border: 5px;
+  padding: 5px 10px;
+}
+
+.delete:hover {
+  color: darkred;
+}
+
+.table {
+  font-family: "Fira Sans";
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    background-color: rgba(0, 105, 163, 0.8);
+    height: 40px;
   }
-  
-  .delete:hover {
-    color: darkred;
-  }
-  
-  .table {
-    font-family: "Fira Sans";
-    width: 100%;
-    border-collapse: collapse;
-  
-    th {
-      background-color: rgba(0, 105, 163, 0.8);
+
+  tbody {
+    tr {
+      text-align: center;
       height: 40px;
     }
-  
-    tbody {
-      tr {
-        text-align: center;
-        height: 40px;
-      }
-  
-      tr:nth-child(even) {
-        background-color: rgba(244, 215, 59, 0.8);
-      }
-    }
-  }
-  
-  .usuarios-heading {
-    font-family: "Fira Sans";
-    color: #0069a3;
-  }
-  
-  .buscar {
-    border-color: #0090d0;
-    font-family: "Fira Sans", sans-serif;
-    height: 30px;
-  }
-  
 
-  .crear-button {
-
-  .buscar-button {
-
-    border-radius: 50px;
-    border-color: #0069a3;
-    background-color: #f4d73b;
-    font-family: "Fira Sans";
-    color: #0069a3;
-  }
-  
-  .usuarios {
-    &__center {
-      display: flex;
-      justify-content: center;
-      height: 100vh;
-    }
-  
-    &__background {
-      width: 950px;
-      background-color: #ededed;
-      padding: 20px;
-      border-radius: 5px;
-    }
-  
-    &__left {
-      &__logo {
-        height: 50px;
-        padding: 0 10px;
-      }
+    tr:nth-child(even) {
+      background-color: rgba(244, 215, 59, 0.8);
     }
   }
-  
+}
+
+.usuarios-heading {
+  font-family: "Fira Sans";
+  color: #0069a3;
+}
+
+.buscar {
+  border-color: #0090d0;
+  font-family: "Fira Sans", sans-serif;
+  height: 30px;
+}
+
+.buscar-buttom {
+  border-radius: 50px;
+  border-color: #0069a3;
+  background-color: #FFFFFF;
+  font-family: "Fira Sans";
+  color: #0069a3;
+}
+
+.crear-button {
+  border-radius: 50px;
+  border-color: #0069a3;
+  background-color: #f4d73b;
+  font-family: "Fira Sans";
+  color: #0069a3;
+}
+
+.usuarios {
+  &__center {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  &__background {
+    width: 950px;
+    background-color: #ededed;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  &__left {
+    &__logo {
+      height: 50px;
+      padding: 0 10px;
+    }
+  }
+}

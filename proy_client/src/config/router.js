@@ -6,18 +6,22 @@ import { Home } from "../pages/web/Home/Home";
 import { Register }from "../pages/web/Register/register";
 import { NotFound } from "../pages/web/NotFound/NotFound";
 import { LayoutLogin } from "../Layouts/Login/LayoutLogin";
-import { redactar } from "../pages/admin/Write/redactar";
-import { Sent } from "../pages/admin/Sent/Sent";
+import { Redactar } from "../pages/admin/Mensajes/Write/redactar";
+import { Sent } from "../pages/admin/Mensajes/Sent/Sent";
 import { EditUser } from "../pages/admin/Usuarios/EditUser/EditUser";
+import { CreateUser } from "../pages/admin/Usuarios/CreateUser/CreateUser";
+
 
 /* Components > Layouts > Pages > routes */
 const AdminRoutes = [
   { path: "/admin", component: Admin, layout: LayoutGeneral },
-  { path: "/admin/users", component: Usuarios, layout: LayoutGeneral },
-  { path: "/admin/users/edit", component: EditUser, layout: LayoutGeneral },
+  { path: "/admin/users/all", component: Usuarios, layout: LayoutGeneral },
+  { path: "/admin/users/update/:id", component: EditUser, layout: LayoutGeneral },
+  { path: "/admin/users/create", component: CreateUser, layout: LayoutGeneral },
   { path: "/login", component: Singin , layout: LayoutLogin },
-  { path: "/admin/mensajes/redactar", component: redactar, layout: LayoutGeneral },
-  { path: "/admin/mensajes/enviados", component: Sent, layout: LayoutGeneral },
+  { path: "/admin/mensajes/redactar", component:Redactar, layout: LayoutGeneral },
+  { path: "/admin/user/messages/all", component: Sent, layout: LayoutGeneral },
+
 ];
 
 const GeneralRoutes = [

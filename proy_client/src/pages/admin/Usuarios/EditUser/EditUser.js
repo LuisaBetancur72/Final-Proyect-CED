@@ -1,34 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Form, Input, Button, Select } from "antd";
-import { ArrowRightOutlined, CloseOutlined } from "@ant-design/icons";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Button, Form, Input, Select, Switch } from "antd";
 import "./EditUser.scss";
-import * as Yup from "yup";
-import axios from "axios";
+import { ArrowRightOutlined, CloseOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
-const valuesRegister = {
-  UserType: "",
-  Fullname: "",
-  email: "",
-  password: "",
-  Phone: "",
-};
-
-const validateRegister = Yup.object().shape({
-  UserType: Yup.string().required("Seleccione el tipo de usuario"),
-  Fullname: Yup.string().required("Ingrese el nombre completo"),
-  email: Yup.string()
-    .required("Es necesario el correo")
-    .matches(
-      /^[a-zA-Z0-9._%+-]+@autonoma\.com$/,
-      "El correo debe ser de dominio autonoma.com"
-    ),
-  password: Yup.string().required("Es necesario la contraseña"),
-  Phone: Yup.string().required("Es necesario el número de teléfono"),
-});
-
 export const EditUser = () => {
+  const { id } = useParams();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
   const [errorMessages, setErrorMessages] = useState([]);
 
@@ -36,7 +17,20 @@ export const EditUser = () => {
   const [municipios, setMunicipios] = useState([]);
   const [departamentoSeleccionado, setDepartamentoSeleccionado] = useState("");
   const [municipioSeleccionado, setMunicipioSeleccionado] = useState("");
+  const [active, setActive] = useState("");
 
+  useEffect(() => {
+    // Realizar solicitud HTTP para obtener los detalles del usuario con el ID proporcionado
+    fetch(`http://127.0.0.1:5000/api/v1/users/update/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setUser(data);
+        form.setFieldsValue(data);
+      })
+      .catch((error) => {
+        console.error("Error al obtener los detalles del usuario:", error);
+      });
+  }, [id, form]);
   useEffect(() => {
     const fetchDepartamentos = async () => {
       try {
@@ -73,7 +67,7 @@ export const EditUser = () => {
         data[0].c_digo_dane_del_municipio
       ) {
         const municipios = data.map((municipio) => ({
-          value: municipio.c_digo_dane_del_municipio,
+          value: municipio.municipio,
           label: municipio.municipio,
         }));
         municipios.sort((a, b) => a.label.localeCompare(b.label));
@@ -89,34 +83,50 @@ export const EditUser = () => {
       setMunicipios([]);
     }
   };
-
   const handleDepartamentoChange = (value) => {
     setDepartamentoSeleccionado(value);
     setMunicipioSeleccionado("");
     fetchMunicipios(value);
   };
 
-  const handleRegister = (values) => {
-    axios
-      .post("http://localhost:5000/api/v1/users", values, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        form.resetFields();
-        setErrorMessages([]);
+  const handleSwitchChange = (value) => {
+    setActive(value); // Actualizar el estado del interruptor (switch)
+  };
+
+  const handleUpdate = () => {
+    form
+      .validateFields()
+      .then((values) => {
+        setLoading(true);
+
+        // Realizar solicitud HTTP para actualizar el usuario con los valores proporcionados
+        fetch(`http://127.0.0.1:5000/api/v1/users/update/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Usuario actualizado:", data);
+            setLoading(false);
+            form.resetFields();
+            // Realizar cualquier acción adicional después de la actualización exitosa, como redireccionar a otra página
+          })
+          .catch((error) => {
+            console.error("Error al actualizar el usuario:", error);
+            setLoading(false);
+          });
       })
       .catch((error) => {
-        console.error(error.response);
-        setErrorMessages(error.response.data.errors);
+        console.error("Error de validación del formulario:", error);
       });
   };
 
-  const onFinish = (values) => {
-    handleRegister(values);
-  };
+  if (!user) {
+    return <div>Cargando...</div>;
+  }
 
   return (
     <div className="edit__center">
@@ -126,13 +136,7 @@ export const EditUser = () => {
 
           <div>
             <div>
-              <Form
-                form={form}
-                initialValues={valuesRegister}
-                validationSchema={validateRegister}
-                onFinish={onFinish}
-                name="basic"
-              >
+              <Form form={form} name="basic">
                 <Form.Item
                   label={
                     <span className="label-text-edit">Tipo de Usuario</span>
@@ -167,7 +171,8 @@ export const EditUser = () => {
                 </Form.Item>
                 <Form.Item
                   label={<span className="label-text-edit">Estado</span>}
-                  name="status"
+                  name="active"
+                  initialValue={active}
                   rules={[
                     {
                       required: true,
@@ -177,7 +182,7 @@ export const EditUser = () => {
                   labelCol={{ span: 8 }}
                   wrapperCol={{ span: 16 }}
                 >
-                  <Input className="input-field-edit" />
+                  <Switch onChange={handleSwitchChange} checked={active} />
                 </Form.Item>
                 <Form.Item
                   label={<span className="label-text-edit">Correo</span>}
@@ -202,9 +207,7 @@ export const EditUser = () => {
                   <Input className="input-field-edit" />
                 </Form.Item>
                 <Form.Item
-                  label={
-                    <span className="label-text-edit">Contraseña</span>
-                  }
+                  label={<span className="label-text-edit">Contraseña</span>}
                   name="password"
                   rules={[
                     {
@@ -245,9 +248,7 @@ export const EditUser = () => {
                 )}
 
                 <Form.Item
-                  label={
-                    <span className="label-text-edit">Departamento</span>
-                  }
+                  label={<span className="label-text-edit">Departamento</span>}
                   name="Departamento"
                   rules={[
                     {
@@ -308,8 +309,10 @@ export const EditUser = () => {
                 <Form.Item>
                   <div className="button-container-editar">
                     <Button
-                      className="editar-button"
+                      className="edit"
                       htmlType="submit"
+                      onClick={handleUpdate}
+                      loading={loading}
                     >
                       Editar <ArrowRightOutlined />
                     </Button>

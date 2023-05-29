@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "./Usuarios.scss";
+import { Button } from "antd";
+
 
 export const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [searchId, setSearchId] = useState("");
   const [foundUser, setFoundUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Realizar solicitud HTTP para obtener los datos de los usuarios desde la base de datos
@@ -17,9 +21,26 @@ export const Usuarios = () => {
   }, []);
 
   const handleDelete = (id) => {
-    // Lógica para eliminar el usuario con el ID proporcionado
-    // Puedes enviar una solicitud HTTP DELETE a la URI http://127.0.0.1:5000/api/v1/usuarios/<id>
-    console.log(`Eliminar usuario con ID: ${id}`);
+    // Enviar solicitud HTTP DELETE para eliminar el usuario de la base de datos
+    fetch(`http://127.0.0.1:5000/api/v1/users/delete/${id}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        // Eliminar el usuario del estado de usuarios
+        const updatedUsuarios = usuarios.filter((usuario) => usuario.id !== id);
+        setUsuarios(updatedUsuarios);
+        navigate("/admin/users/all");
+      })
+      .catch((error) => {
+        console.error("Error al eliminar el usuario:", error);
+      });
+  };
+
+  const handleEditUser = (id) => {
+    
+    // Guardar el ID del usuario seleccionado
+    // Navegar a la página de edición de usuarios con el ID como parámetro
+    navigate(`/admin/users/edit/${id}`);
   };
 
   const handleSearch = () => {
@@ -41,9 +62,14 @@ export const Usuarios = () => {
               onChange={(e) => setSearchId(e.target.value)}
             />
             &nbsp;&nbsp;
-            <button className="buscar-button" onClick={handleSearch}>
+            <button className="buscar-buttom" onClick={handleSearch}>
               Buscar
             </button>
+            &nbsp;&nbsp;
+            <Button href="/admin/users/create" className="crear-button" htmlType="submit">
+              Crear Usuario
+            </Button>
+
           </div>
           <br></br>
           <table className="table">
@@ -68,18 +94,18 @@ export const Usuarios = () => {
                   <td>{foundUser.fullname}</td>
                   <td>{foundUser.email}</td>
                   <td>{foundUser.phone}</td>
-                  <td>{foundUser.active ? "Activo" : "Inactivo"}</td>
+                  <td>{foundUser.active? "Activo" : "Inactivo"}</td>
                   <td>{foundUser.Departamento}</td>
                   <td>{foundUser.Municipio}</td>
                   <td>
-                    <a href="/admin/users/edit">Editar</a>
-                    <a
-                      href="#"
-                      className="delete"
+                    <Link to={`/admin/users/update/${foundUser.id}`}>Editar</Link>
+                    <Link
+                      to={`/admin/users/delete/${foundUser.id}`}
+                      className="delete-link"
                       onClick={() => handleDelete(foundUser.id)}
                     >
-                      Eliminar
-                    </a>
+                       Eliminar
+                    </Link>
                   </td>
                 </tr>
               ) : (
@@ -90,18 +116,18 @@ export const Usuarios = () => {
                     <td>{usuario.fullname}</td>
                     <td>{usuario.email}</td>
                     <td>{usuario.phone}</td>
-                    <td>{usuario.active ? "Activo" : "Inactivo"}</td>
+                    <td>{usuario.acive? "Activo" : "Inactivo"}</td>
                     <td>{usuario.Departamento}</td>
                     <td>{usuario.Municipio}</td>
                     <td>
-                      <a href="/admin/users/edit">Editar</a>
-                      <a
-                        href="#"
-                        className="delete"
-                        onClick={() => handleDelete(usuario.id)}
-                      >
-                        Eliminar
-                      </a>
+                      <Link to={`/admin/users/update/${usuario.id}`}>Editar</Link>
+                      <Link
+                      to={`/admin/users/delete/${usuario.id}`}
+                      className="delete-link"
+                      onClick={() => handleDelete(usuario.id)}
+                    >
+                       Eliminar
+                    </Link>
                     </td>
                   </tr>
                 ))

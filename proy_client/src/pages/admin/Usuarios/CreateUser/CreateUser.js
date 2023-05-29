@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Button, Select } from "antd";
+import { Form, Input, Button, Select,Switch } from "antd";
 import { ArrowRightOutlined, CloseOutlined } from "@ant-design/icons";
 import "./CreateUser.scss";
 import * as Yup from "yup";
@@ -36,6 +36,7 @@ export const CreateUser = () => {
   const [municipios, setMunicipios] = useState([]);
   const [departamentoSeleccionado, setDepartamentoSeleccionado] = useState("");
   const [municipioSeleccionado, setMunicipioSeleccionado] = useState("");
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const fetchDepartamentos = async () => {
@@ -73,7 +74,7 @@ export const CreateUser = () => {
         data[0].c_digo_dane_del_municipio
       ) {
         const municipios = data.map((municipio) => ({
-          value: municipio.c_digo_dane_del_municipio,
+          value: municipio.municipio,
           label: municipio.municipio,
         }));
         municipios.sort((a, b) => a.label.localeCompare(b.label));
@@ -89,6 +90,7 @@ export const CreateUser = () => {
       setMunicipios([]);
     }
   };
+  
 
   const handleDepartamentoChange = (value) => {
     setDepartamentoSeleccionado(value);
@@ -96,9 +98,14 @@ export const CreateUser = () => {
     fetchMunicipios(value);
   };
 
+  const handleSwitchChange = (value) => {
+    setActive(value); // Actualizar el estado del interruptor (switch)
+  };
+
   const handleRegister = (values) => {
+    values.municipio = municipioSeleccionado;
     axios
-      .post("http://localhost:5000/api/v1/users", values, {
+      .post("http://localhost:5000/api/v1/users/create", values, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -166,8 +173,9 @@ export const CreateUser = () => {
                   <Input className="input-field-create" />
                 </Form.Item>
                 <Form.Item
-                  label={<span className="label-text-create">Estado</span>}
-                  name="status"
+                  label={<span className="label-text-edit">Estado</span>}
+                  name="active"
+                  initialValue={active}
                   rules={[
                     {
                       required: true,
@@ -177,7 +185,7 @@ export const CreateUser = () => {
                   labelCol={{ span: 8 }}
                   wrapperCol={{ span: 16 }}
                 >
-                  <Input className="input-field-create" />
+                  <Switch onChange={handleSwitchChange} checked={active} />
                 </Form.Item>
                 <Form.Item
                   label={<span className="label-text-create">Correo</span>}
@@ -202,9 +210,7 @@ export const CreateUser = () => {
                   <Input className="input-field-create" />
                 </Form.Item>
                 <Form.Item
-                  label={
-                    <span className="label-text-create">Contraseña</span>
-                  }
+                  label={<span className="label-text-create">Contraseña</span>}
                   name="password"
                   rules={[
                     {
@@ -278,7 +284,7 @@ export const CreateUser = () => {
                 </Form.Item>
                 <Form.Item
                   label={<span className="label-text-create">Municipio</span>}
-                  name="Municipio"
+                  name="municipio"
                   rules={[
                     {
                       required: true,
@@ -307,10 +313,7 @@ export const CreateUser = () => {
 
                 <Form.Item>
                   <div className="button-container-create">
-                    <Button
-                      className="create-button"
-                      htmlType="submit"
-                    >
+                    <Button className="create-button" htmlType="submit">
                       Crear <ArrowRightOutlined />
                     </Button>
                     &nbsp;&nbsp;

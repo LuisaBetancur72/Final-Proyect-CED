@@ -11,6 +11,7 @@ import { Sent } from "../pages/admin/Mensajes/Sent/Sent";
 import { EditUser } from "../pages/admin/Usuarios/EditUser/EditUser";
 import { CreateUser } from "../pages/admin/Usuarios/CreateUser/CreateUser";
 
+
 /* Components > Layouts > Pages > routes */
 const AdminRoutes = [
   { path: "/admin", component: Admin, layout: LayoutGeneral },
@@ -20,6 +21,7 @@ const AdminRoutes = [
   { path: "/login", component: Singin , layout: LayoutLogin },
   { path: "/admin/mensajes/redactar", component:Redactar, layout: LayoutGeneral },
   { path: "/admin/user/messages/all", component: Sent, layout: LayoutGeneral },
+
 ];
 
 const GeneralRoutes = [

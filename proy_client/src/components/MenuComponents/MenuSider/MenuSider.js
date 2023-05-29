@@ -42,6 +42,7 @@ export const MenuSider = (props) => {
       label: <span className="navbar-text">Mis Citas</span>,
     },
     {
+
       key: "/admin/users/all",
       icon: <UserOutlined />,
       label: <span className="navbar-text">Usuarios</span>,
@@ -52,6 +53,7 @@ export const MenuSider = (props) => {
       label: <span className="navbar-text">Mensajes</span>,
       subMenu: [
         {
+
           key: "/admin/user/messages/all",
           icon: <ExportOutlined />,
           label: <span className="navbar-text">Enviados</span>,
